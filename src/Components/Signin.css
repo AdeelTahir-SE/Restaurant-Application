@@ -1,0 +1,63 @@
+.Container{
+    margin: auto;
+    margin-top: 40px;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  }
+  .Signin{
+    display: flex;
+    height: 80vh;
+    max-width: 60vw;
+    border: solid black;
+    border-radius: 41px;
+    margin: auto;
+    
+  }
+  form{
+    display: flex;
+    width: 45em;
+    flex-direction: column;
+    padding: 17px;
+    overflow: auto;
+    scrollbar-width: none;
+  }
+  form input{
+    margin-bottom: 14px;
+  }
+  
+  input[type="Submit"]{
+    padding: 7px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 7px;
+    background: linear-gradient(rgb(255, 115, 0),Orange);
+    font-size: 1.0em;
+    font-weight: 600;
+  }
+  label{
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+  input{
+    padding: 3px;
+    border-radius: 4px;
+  }
+  .sidedesc{
+    border-radius: 0 40px  40px 0;
+    background: linear-gradient(rgb(255, 115, 0),Orange);
+  padding: 12px;
+  overflow: auto;
+   scrollbar-width: none;
+   }
+  h1{
+    text-align: center;
+  }
+  p{
+    max-width: 70em;
+  }
+  h2{
+    text-align: center;
+  }
+
+  span{
+    color: red;
+  }
+  
