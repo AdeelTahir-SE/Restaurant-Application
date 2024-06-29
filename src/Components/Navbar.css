@@ -13,7 +13,7 @@ a {
     scroll-behavior: smooth;
 
 }
-nav{
+.secnav{
     position: sticky;
     background: linear-gradient(Orange,rgb(255, 228, 106));
     

@@ -1,19 +1,19 @@
 import React from 'react'
 import "./Navbar.css"
-import { NavLink,Link } from 'react-router-dom'
 const Navbar = () => {
 function clicked(e){
 console.log(e.target.innerHTML)
 }
   return (
-   <nav>
+   <nav className='secnav'>
     <ul onClick={clicked}>
-<a  href="#"><li>Tacos</li></a>
-<a href='#'><li>Nachos</li></a>
-<a href='#'><li>Sides</li></a>
-<a href='#'><li>Ramen</li></a>
-<a href='#'><li>Desert</li></a>
-<a href='#'><li>Pizzas</li></a>
+<a  href="#Tacos"><li>Tacos</li></a>
+<a href='#Nachos'><li>Nachos</li></a>
+<a href='#Sides'><li>Sides</li></a>
+<a href='#Ramen'><li>Ramen</li></a>
+<a href='#Dessert'><li>Dessert</li></a>
+<a href='#Pizzas'><li>Pizzas</li></a>
+<a href='#Burgers'><li>Burgers</li></a>
     </ul>
    </nav>
   )

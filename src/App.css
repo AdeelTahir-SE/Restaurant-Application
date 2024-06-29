@@ -1,0 +1,18 @@
+.food{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    gap: 20px; 
+}
+/* App.css */
+
+.blur {
+  filter: blur(5px); /* Apply a blur effect */
+  pointer-events: none; /* Disable pointer events on blurred content */
+}
+
+/* Style for no blur effect */
+.no-blur {
+  filter: none; /* Remove any filters */
+}

@@ -2,7 +2,17 @@
     margin: auto;
     margin-top: 40px;
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  }
+    position: fixed; /* Fix the modal position relative to the viewport */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the modal exactly */
+    background-color: rgb(255, 255, 255); /* Background color of the modal */
+     /* Padding inside the modal */
+    border-radius: 41px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
+    z-index: 1000; /* Ensure it appears above other content */
+    
+     }
   .Signin{
     display: flex;
     height: 80vh;

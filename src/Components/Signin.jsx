@@ -1,21 +1,36 @@
-import React from "react";
+import React, { useEffect, useRef,useContext } from "react";
 import "./Signin.css";
 import { useForm } from "react-hook-form";
-const Signin = () => {
+import {UserContext} from "../Context/Usercontext.js"
+const Signin = ({ setSigninclicked }) => {
+  const modalRef = useRef(null);
+  const User = useContext(UserContext);
+
   const {
     register,
     handleSubmit,
-    watch,
-    setError,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
+    // Handle your form submission logic here
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target) && !(event.target.className=="user"||event.target.className=="userimg")) {
+        User.setSigninclicked(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [User.setSigninclicked]);
   return (
-    <>
-      <div className="Container">
+      <div className="Container" ref={modalRef}>
         <div className="Signin">
           <form onSubmit={handleSubmit(onSubmit)} className="Form">
             <h2>Sign in</h2>
@@ -183,7 +198,6 @@ const Signin = () => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 
