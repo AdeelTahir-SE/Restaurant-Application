@@ -1,10 +1,8 @@
 import React, { useEffect, useRef,useContext } from "react";
 import "./Signin.css";
 import { useForm } from "react-hook-form";
-import {UserContext} from "../Context/Usercontext.js"
-const Signin = ({ setSigninclicked }) => {
+const Signin = () => {
   const modalRef = useRef(null);
-  const User = useContext(UserContext);
 
   const {
     register,
@@ -12,23 +10,17 @@ const Signin = ({ setSigninclicked }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    // Handle your form submission logic here
+  const onSubmit = async (data) => {
+    let response = await fetch("https://localhost:3000/Signin",{method:"POST",
+      header:"",
+      body:JSON.stringify(data)
+    })
+     let x =await response.json()
+     console.log(x)
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target) && !(event.target.className=="user"||event.target.className=="userimg")) {
-        User.setSigninclicked(false);
-      }
-    };
 
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [User.setSigninclicked]);
+
   return (
       <div className="Container" ref={modalRef}>
         <div className="Signin">

@@ -3,15 +3,12 @@ import "./Header.css"
 import logo from "../assets/FoodieHaven.jpeg"
 import user from "../assets/male-icon.png"
 import cart from "../assets/cart-line-icon.png"
-import {UserContext} from "../Context/Usercontext.js"
 
 const Header = () => {
 
 
-  const User = useContext(UserContext);
 
  function isClicked(){
- User.setSigninclicked(true)
 }
 
 
