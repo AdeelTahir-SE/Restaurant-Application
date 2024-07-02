@@ -1,7 +1,5 @@
 # Foodie Haven 🍔🍕
 
-![Foodie Haven](https://github.com/AdeelTahir-SE/Restaurant-Application/assets/155211674/51b1332f-0af0-4c69-ace9-f4d6d2d9b8e1)
-
 Foodie Haven is a full-stack web application built with the MERN stack (MongoDB, Express.js, React.js, Node.js). It allows users to browse a variety of food items, add them to a shopping cart, and place orders.
 
 ## Features
