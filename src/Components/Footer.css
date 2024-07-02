@@ -8,4 +8,17 @@
     bottom: 0;
     top: 100%;
     width: 100%;
+    height: 80px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+.footerlogos{
+    width: 25px;
+    height: auto;
+}
+.logosfooter{
+    display: flex;
+     flex-direction: row;
+    gap: 12px;
+   
+}
+

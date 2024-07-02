@@ -1,118 +1,141 @@
-import React, { useEffect, useRef,useContext } from "react";
+import React, { useRef, useState } from "react";
 import "./Signin.css";
 import { useForm } from "react-hook-form";
+
 const Signin = (props) => {
   const modalRef = useRef(null);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const [login, setLogin] = useState(true);
+  const [res, setRes] = useState(null);
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = async (data) => {
-    let response = await fetch("http://localhost:3000/Signin",{method:"POST",
+    let url = login ? "http://localhost:3000/Signin" : "http://localhost:3000/Login";
+    let response = await fetch(url, {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body:JSON.stringify(data)
-    })
-     let x =await response.json()
-     props.User(JSON.stringify(data))
+      body: JSON.stringify(data),
+    });
+    let result = await response.json();
+    setRes(result);
 
-     console.log(x)
-     console.log(document.querySelector(".Container").classList.contains("visible"))
-     if(document.querySelector(".Container").classList.contains("visible")){
-      document.querySelector(".Container").classList.remove("visible")
-      document.querySelector(".Container").classList.remove("visible")
-     
-     }
-     if(document.querySelector(".main-content").style.filter == "blur(5px)"){
-      document.querySelector(".main-content").style.filter = "blur(0px)"
-     }
+    if (response.status === 200) {
 
+     login? props.User(JSON.stringify(data)):props.User(JSON.stringify(result));
+     console.log((JSON.stringify(result)))
+
+      clearForm();
+      closeModal();
+    }
+
+    setTimeout(() => {
+      setRes(null);
+    }, 3000);
   };
 
+  const clearForm = () => {
+    Array.from(document.querySelectorAll("input")).forEach(input => (input.value = ""));
+  };
 
+  const closeModal = () => {
+    if (document.querySelector(".Container").classList.contains("visible")) {
+      document.querySelector(".Container").classList.remove("visible");
+      document.querySelector(".main-content").style.filter = "blur(0px)";
+    }
+  };
 
   return (
-      <div className="Container" ref={modalRef}>
-        <div className="Signin">
-          <form onSubmit={handleSubmit(onSubmit)} className="Form">
-            <h2>Sign in</h2>
-            <label htmlFor="UserName">Username</label>
-            <input
-              type="text"
-              {...register("UserName", {
-                required: "Username is required",
-                maxLength: {
-                  value: 15,
-                  message: "Length should be less than 20",
-                },
-              })}
-            />
-            {errors.UserName && (
-              <span className="error">{errors.UserName.message}</span>
-            )}
+    <div className="Container" ref={modalRef}>
+      <div className="Signin">
+        <form onSubmit={handleSubmit(onSubmit)} className="Form">
+          <h2>{login ? "Sign in" : "Login"}</h2>
+          {login && (
+            <>
+              <label htmlFor="Name">Username</label>
+              <input
+                type="text"
+                {...register("Name", {
+                  required: "Username is required",
+                  maxLength: {
+                    value: 20,
+                    message: "Length should be less than 20",
+                  },
+                })}
+              />
+              {errors.UserName && (
+                <span className="error">{errors.UserName.message}</span>
+              )}
+            </>
+          )}
+          <label htmlFor="Email">Email</label>
+          <input
+            type="email"
+            {...register("Email", {
+              required: "Email is required",
+            })}
+          />
+          {errors.Email && (
+            <span className="error">{errors.Email.message}</span>
+          )}
 
-            <label htmlFor="Email">Email</label>
-            <input
-              type="email"
-              {...register("Email", {
-                required: "Email is required",
-              })}
-            />
-            {errors.Email && (
-              <span className="error">{errors.Email.message}</span>
-            )}
+          <label htmlFor="Password">Password</label>
+          <input
+            type="password"
+            {...register("Password", {
+              required: "Password is required",
+              minLength: {
+                value: 10,
+                message: "Length should be more than 10",
+              },
+            })}
+          />
+          {errors.Password && (
+            <span className="error">{errors.Password.message}</span>
+          )}
 
-            <label htmlFor="Password">Password</label>
-            <input
-              type="password"
-              {...register("Password", {
-                required: "Password is required",
-                minLength: {
-                  value: 10,
-                  message: "Length should be more than 10",
-                },
-              })}
-            />
-            {errors.Password && (
-              <span className="error">{errors.Password.message}</span>
-            )}
+          {login && (
+            <>
+              <label htmlFor="ConfirmPassword">Confirm Password</label>
+              <input
+                type="password"
+                {...register("ConfirmPassword", {
+                  required: "Please confirm your password",
+                  minLength: {
+                    value: 10,
+                    message: "Length should be more than 10",
+                  },
+                })}
+              />
+              {errors.ConfirmPassword && (
+                <span className="error">{errors.ConfirmPassword.message}</span>
+              )}
 
-            <label htmlFor="ConfirmPassword">Confirm Password</label>
-            <input
-              type="password"
-              {...register("ConfirmPassword", {
-                required: "Please confirm your password",
-                minLength: {
-                  value: 10,
-                  message: "Length should be more than 10",
-                },
-              })}
-            />
-            {errors.ConfirmPassword && (
-              <span className="error">{errors.ConfirmPassword.message}</span>
-            )}
+              <label htmlFor="PhoneNumber">Phone Number</label>
+              <input
+                type="tel"
+                {...register("PhoneNumber", {
+                  required: "Phone number is required",
+                  minLength: {
+                    value: 10,
+                    message: "Length should be more than 10",
+                  },
+                })}
+              />
+              {errors.PhoneNumber && (
+                <span className="error">{errors.PhoneNumber.message}</span>
+              )}
+            </>
+          )}
 
-            <label htmlFor="PhoneNumber">Phone Number</label>
-            <input
-              type="tel"
-              {...register("PhoneNumber", {
-                required: "Phone number is required",
-                minLength: {
-                  value: 10,
-                  message: "Length should be more than 10",
-                },
-              })}
-            />
-            {errors.PhoneNumber && (
-              <span className="error">{errors.PhoneNumber.message}</span>
-            )}
-
-            <input type="submit" value="Submit" />
-          </form>
+          <input type="submit" value="Submit" />
+          {login ? (
+            <p className="linklogin" onClick={() => setLogin(false)}>Already registered? Click to login</p>
+          ) : (
+            <p className="linklogin" onClick={() => setLogin(true)}>Go back to register? Click here</p>
+          )}
+          {res && <span>{res.msg}</span>}
+        </form>
           <div className="sidedesc">
             <h2>Restaurant-App</h2>
             <h1>Welcome to Foodie Haven</h1>
