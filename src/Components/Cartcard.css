@@ -4,6 +4,12 @@
     display: none; /* Default state: hidden */
     transition: all 0.3s ease-in-out;
   }
+  .foodimagescart{
+    max-width: 230px;
+    border-radius: 6px;
+    height: auto;
+    max-height: 200px;
+  }
   
   .cartcardcontainer.visible {
     display: flex;
@@ -45,7 +51,7 @@
   }
   
   .countervalue {
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: xx-large;
   }
   

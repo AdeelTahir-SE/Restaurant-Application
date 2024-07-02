@@ -50,7 +50,7 @@
       {
       "key": "7",
       "type": "Ramen",
-      "imgurl": "url_to_ramen_image",
+      "imgurl":"",
       "Name": "Spicy Ramen",
       "desc": "Hot and spicy ramen with rich broth.",
       "price": "7.99"

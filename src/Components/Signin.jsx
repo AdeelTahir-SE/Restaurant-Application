@@ -1,7 +1,7 @@
 import React, { useEffect, useRef,useContext } from "react";
 import "./Signin.css";
 import { useForm } from "react-hook-form";
-const Signin = () => {
+const Signin = (props) => {
   const modalRef = useRef(null);
 
   const {
@@ -11,12 +11,26 @@ const Signin = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    let response = await fetch("https://localhost:3000/Signin",{method:"POST",
-      header:"",
+    let response = await fetch("http://localhost:3000/Signin",{method:"POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body:JSON.stringify(data)
     })
      let x =await response.json()
+     props.User(JSON.stringify(data))
+
      console.log(x)
+     console.log(document.querySelector(".Container").classList.contains("visible"))
+     if(document.querySelector(".Container").classList.contains("visible")){
+      document.querySelector(".Container").classList.remove("visible")
+      document.querySelector(".Container").classList.remove("visible")
+     
+     }
+     if(document.querySelector(".main-content").style.filter == "blur(5px)"){
+      document.querySelector(".main-content").style.filter = "blur(0px)"
+     }
+
   };
 
 

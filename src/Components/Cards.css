@@ -4,10 +4,11 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s;
-    background-color: rgb(250, 155, 31);
+    background-color: rgb(241, 107, 17);
     display: flex;
     padding: 5px;
     flex-direction: row;
+    cursor: pointer;
 }
 
 .Card:hover{
@@ -20,5 +21,9 @@
     flex-direction: column;
 }
 
-
+.foodimages{
+    max-width: 150px;
+    height: auto;
+    border-radius: 6px;
+}
 

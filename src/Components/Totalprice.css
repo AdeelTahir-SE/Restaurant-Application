@@ -1,0 +1,32 @@
+
+.totalprice {
+    display: none; /* Default state: hidden */
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .totalprice.visible {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(red, orange, rgb(255, 230, 0));
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 400px;
+    border-radius: 15px;
+    border: 3px solid black;
+    overflow: auto;
+   
+  }
+  .foodlist{
+display: flex;
+flex-direction: column;
+  }
+  ul,.values{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+    
+  }

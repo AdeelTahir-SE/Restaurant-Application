@@ -16,7 +16,7 @@ a {
 .secnav{
     position: sticky;
     background: linear-gradient(Orange,rgb(255, 228, 106));
-    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 li{
     padding: 30px;

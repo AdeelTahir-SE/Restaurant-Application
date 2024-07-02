@@ -21,7 +21,7 @@ const Cards = (props) => {
       <p className='Price'>{props.price}</p>
       </div>
       <div className="image">
-      <img src={props.imgurl} alt="Food image" />
+      <img src={props.imgurl} alt="Food image" className='foodimages' />
       </div>
     </div>
   );

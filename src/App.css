@@ -16,3 +16,11 @@
 .no-blur {
   filter: none; /* Remove any filters */
 }
+.main-content{
+  /* background: linear-gradient(rgb(255, 123, 0),rgb(255, 166, 0),rgb(255, 102, 0)); */
+/* background-color: rgb(46, 46, 46); */
+background-image: url("https://ideogram.ai/g/BsAUadlmSx2swV1q0fFjcA/0");
+}
+h2{
+  color: white;
+}

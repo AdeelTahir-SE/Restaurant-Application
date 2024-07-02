@@ -13,3 +13,13 @@
 ul{
     align-items: center;
 }
+li{
+    cursor: pointer;
+
+}
+.user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
